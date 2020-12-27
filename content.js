@@ -8,7 +8,7 @@ let countVideoParsed = 0;
 let parseCompleted = false;
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  // console.log("onMessage", request, "sender", sender);
+  console.log("onMessage", request, "sender", sender);
   if (!parseCompleted) {
     createAlert("Not completed yet. Please try again later!");
     return;
@@ -27,7 +27,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 $(".course-sidebar")
   .find("li.section-item")
   .each(function (index, el) {
-    // console.log("#", index, el);
+    console.log("#", index, el);
     let self = $(this);
     let courseSection = self.parents(".course-section");
     let sectionTitle = $(courseSection).find(".section-title").text().trim();
@@ -66,7 +66,7 @@ function addLectureToList(id, { name, url, link }) {
   item.link = link;
   item.name = name;
   countVideoParsed++;
-  //console.log(countVideoParsed, item);
+  console.log(countVideoParsed, item);
 
   if (countVideoParsed === countVideos) {
     console.log("Parsing completed. Total videos: ", countVideos);
